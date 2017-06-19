@@ -1,3 +1,4 @@
+package game;
 
 public class Player {
 	private int balance;
@@ -9,10 +10,15 @@ public class Player {
 	
 	public void move() {
 		position += Dice.roll();
-		passGo();
+		passGoCheck();
 	}
 	
-	public void passGo() {
+	public void moveToPosition(int position) {
+		this.position = position;
+		passGoCheck();
+	}
+	
+	public void passGoCheck() {
 		if (position > 32) {
 			position -= 32;
 			balance += 2;
@@ -21,6 +27,14 @@ public class Player {
 	
 	public int getBalance() {
 		return balance;
+	}
+	
+	public int pay(int cost) {
+		return balance -= cost;
+	}
+	
+	public void receivePayment(int amount) {
+		balance += amount;
 	}
 	
 	public int getPosition() {

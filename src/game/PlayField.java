@@ -1,3 +1,4 @@
+package game;
 
 public class PlayField {
 	private int boxes = 32;
