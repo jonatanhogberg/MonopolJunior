@@ -3,22 +3,27 @@ import game.OnkelKrosus;
 import game.Player;
 
 public class ShowBox implements Box {
-	
+	private String name;
 	private int cost = 2;
+	
+	public ShowBox(String name) {
+		this.name = name;
+	}
 	
 	@Override
 	public boolean nextAction(Player player) {
-		if (affordEntertainment(player)) {
-			payOnkel(player);
-		}
+		payOnkel(player);
+	
+		return false;
+	}
+	
+	@Override
+	public boolean isBuyable() {
 		return false;
 	}
 	
 	private void payOnkel(Player player) {
-		OnkelKrosus.getInstance().payOnkel(player.pay(cost));
-	}
-	
-	private boolean affordEntertainment(Player player) {
-		return (player.getBalance() >= cost);
+		player.pay(cost);
+		OnkelKrosus.getInstance().payOnkel(cost);
 	}
 }

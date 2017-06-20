@@ -6,6 +6,11 @@ public class ChanceBox implements Box {
 
 	@Override
 	public boolean nextAction(Player player) {
-		return true;
+		return false;
+	}
+
+	@Override
+	public boolean isBuyable() {
+		return false;
 	}
 }

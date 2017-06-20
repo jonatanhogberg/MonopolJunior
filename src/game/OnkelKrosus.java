@@ -5,6 +5,11 @@ public class OnkelKrosus {
 	private int balance = 0;
 
 	private OnkelKrosus() {}
+	
+	//helper
+	public int OnkelMoeny() {
+		return balance;
+	}
 
 	public static OnkelKrosus getInstance(){
 		return instance;

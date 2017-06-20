@@ -4,8 +4,9 @@ public class Player {
 	private int balance;
 	private int position;
 	
-	public Player() {
-		position = 0;
+	public Player(int balance) {
+		this.balance = balance;
+		position = 1;
 	}
 	
 	public void move() {

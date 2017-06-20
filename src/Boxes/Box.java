@@ -6,4 +6,6 @@ public interface Box {
 
 	public boolean nextAction(Player player);
 	
+	public boolean isBuyable();
+	
 }

@@ -8,7 +8,12 @@ public class OnkelKrosusBox implements Box {
 	@Override
 	public boolean nextAction(Player player) {
 		getChangeMoney(player);
-		return true;
+		return false;
+	}
+	
+	@Override
+	public boolean isBuyable() {
+		return false;
 	}
 	
 	private void getChangeMoney(Player player) {

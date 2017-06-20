@@ -2,41 +2,44 @@ package Boxes;
 import game.Player;
 
 public class EntertainmentBox implements Box {
-	public int cost;
-	public boolean isBuyable;
-	public Player owner;
+	private int cost;
+	private boolean isBuyable;
+	private Player owner;
+	private String name;
 	
-	public EntertainmentBox(int cost) {
+	public EntertainmentBox(int cost, String name) {
+		isBuyable = true;
 		this.cost = cost;
 	}
 	
 	@Override
 	public boolean nextAction(Player player) {
-		if (isOwned() == false)
-			return true;
-		else 
-			return payOwner(player);
+		if (isOwned())
+			payOwner(player);
+		return false;
+	}
+	
+	@Override
+	public boolean isBuyable() {
+		return isBuyable;
 	}
 	
 	public boolean isOwned() {
-		return isBuyable;
+		return !isBuyable;
 	}
+
 	
 	public int getCost() {
 		return cost;
 	}
 	
-	public boolean payOwner(Player player) {
-		if (affordEntertainment(player)) {
-			player.pay(cost);
-			owner.receivePayment(cost);
-			return true;
-		}
-		return false;
+	public void payOwner(Player player) {
+		player.pay(cost);
+		owner.receivePayment(cost);
 	}
 	
 	public boolean buy(Player player) {
-		if (isOwned() && affordEntertainment(player)) {
+		if (isBuyable() && affordEntertainment(player)) {
 			owner = player;
 			player.pay(cost);
 			isBuyable = false;

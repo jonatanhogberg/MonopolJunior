@@ -5,25 +5,24 @@ import game.Player;
 
 public class GoToRestBox implements Box {
 	private int cost = 3;
-	private int RestBoxAmountOfSteps = 16;
+	private int RestBoxPos = 9;
 	
 	
 	@Override
 	public boolean nextAction(Player player) {
-		if (affordEntertainment(player)) {
-			payOnkel(player);
-			player.moveToPosition(RestBoxAmountOfSteps);
-			return true;
-		}
-		
+		payOnkel(player);
+		player.receivePayment(2);
+		player.moveToPosition(RestBoxPos);
+
+		return false;
+	}
+	
+	@Override
+	public boolean isBuyable() {
 		return false;
 	}
 	
 	private void payOnkel(Player player) {
 		OnkelKrosus.getInstance().payOnkel(player.pay(cost));
-	}
-	
-	private boolean affordEntertainment(Player player) {
-		return (player.getBalance() >= cost);
 	}
 }
