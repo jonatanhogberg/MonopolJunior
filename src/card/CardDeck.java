@@ -1,16 +1,23 @@
 package card;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class CardDeck {
 	private static CardDeck instance = new CardDeck();
 	
-	private ArrayList<Card> cards = new ArrayList<>();
+	private static ArrayList<Card> cards = new ArrayList<>();
 
-	private CardDeck() {}
+	private CardDeck() {
+		init();
+	}
 	
 	public static CardDeck getInstance(){
 		return instance;
+	}
+	
+	public static void shuffle() {
+		Collections.shuffle(cards);
 	}
 	
 	public void init() {
