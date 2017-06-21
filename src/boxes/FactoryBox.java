@@ -1,4 +1,4 @@
-package Boxes;
+package boxes;
 
 import java.util.HashMap;
 

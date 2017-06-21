@@ -1,4 +1,4 @@
-package Boxes;
+package boxes;
 
 import game.Player;
 

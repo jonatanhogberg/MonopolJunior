@@ -1,4 +1,4 @@
-package Boxes;
+package boxes;
 import game.Dice;
 import game.Player;
 
@@ -12,7 +12,6 @@ public class TrainBox implements Box {
 	@Override
 	public boolean nextAction(Player player) {
 		player.move();
-		System.out.println("Train");
 		return true;
 	}
 	

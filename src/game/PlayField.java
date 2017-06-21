@@ -1,8 +1,8 @@
 package game;
 
-import Boxes.Box;
-import Boxes.EntertainmentBox;
-import Boxes.FactoryBox;
+import boxes.Box;
+import boxes.EntertainmentBox;
+import boxes.FactoryBox;
 
 public class PlayField {
 	private Player[] players = new Player[3];
@@ -97,19 +97,28 @@ public class PlayField {
 		return false;
 	}
 	
-	// Inte klar
+	// Inte klar funkar bara med 2
 	public int victoryPlayer() {
-		int highest = -1;
-		int heighestAmount = 0; 
+		int highestPlayer = -1;
+		int heighestAmount = -1; 
 		
 		if (isGameOver()) {
 			for (int i = 0; i < amountOfPlayers; i++) {
-				if (players[i].getBalance() <= 0) {
 				
+				int currentBalance = players[i].getBalance();
+				
+				if (currentBalance >= heighestAmount) {
+					heighestAmount = currentBalance;
+					highestPlayer = i + 1;
 				}
 			}
 		}
-		return -1;
+		
+		return highestPlayer;
+	}
+	
+	public boolean currentPlayerBroke() {
+		return (currentPlayer.getBalance() >= 0);
 	}
 	
 	public int getCurrentPosition() {

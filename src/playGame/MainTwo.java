@@ -1,5 +1,9 @@
-package game;
-public class Main {
+package playGame;
+
+import game.OnkelKrosus;
+import game.PlayField;
+
+public class MainTwo {
 
 	public static void main(String[] args) {
 		PlayField pf = new PlayField();
