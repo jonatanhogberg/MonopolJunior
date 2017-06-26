@@ -23,6 +23,7 @@ public class GoToRestBox implements Box {
 	}
 	
 	private void payOnkel(Player player) {
-		OnkelKrosus.getInstance().payOnkel(player.pay(cost));
+		player.pay(cost);
+		OnkelKrosus.getInstance().payOnkel(cost);
 	}
 }

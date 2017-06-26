@@ -6,7 +6,6 @@ import boxes.FactoryBox;
 
 public class PlayField {
 	private Player[] players = new Player[3];
-	private int turn;
 	private FactoryBox boxes;
 	
 	private int amountOfPlayers;
@@ -20,10 +19,12 @@ public class PlayField {
 	
 	
 	public void startGame(int amountOfPlayers, int startMoney) {
-		turn = 0;
 		boxes = new FactoryBox();
 		this.amountOfPlayers = amountOfPlayers;
 		newPlayers(startMoney);
+		
+		currentPlayerNumber = 0;
+		currentPlayer = players[currentPlayerNumber];
 	}
 	
 	private void newPlayers(int startMoney) {
@@ -33,27 +34,26 @@ public class PlayField {
 	}
 	
 	
-	public void nextPlayerMove() {
-		currentPlayerNumber = turn;
-		
-		currentPlayer = players[turn];
+	public void playerMove() {
 		currentPlayer.move();
 		
 		int newPosition = currentPlayer.getPosition();
-		currentBox = boxes.getBox(newPosition);
-		boolean newMove = currentBox.nextAction(currentPlayer);
 		
-		if (newMove) {
+		currentBox = boxes.getBox(newPosition);
+		//boolean newAction
+		
+		while (currentBox.nextAction(currentPlayer)) {
 			newPosition = currentPlayer.getPosition();
 			currentBox = boxes.getBox(newPosition);
-			newMove = currentBox.nextAction(currentPlayer);
 		}
-		
-		turn++;
+	}
 	
-		if (amountOfPlayers == turn) {
-			turn = 0;
+	public void nextTurn() {
+		currentPlayerNumber++;	
+		if (amountOfPlayers == currentPlayerNumber) {
+			currentPlayerNumber = 0;
 		}
+		currentPlayer = players[currentPlayerNumber];
 	}
 	
 	public boolean canBuy() {
@@ -97,20 +97,18 @@ public class PlayField {
 		return false;
 	}
 	
-	// Inte klar funkar bara med 2
 	public int victoryPlayer() {
-		int highestPlayer = -1;
-		int heighestAmount = -1; 
+		int highestPlayer = 1;
+		int heighestAmount = Integer.MIN_VALUE;
 		
-		if (isGameOver()) {
-			for (int i = 0; i < amountOfPlayers; i++) {
-				
-				int currentBalance = players[i].getBalance();
-				
-				if (currentBalance >= heighestAmount) {
+		
+		for (int i = 0; i < amountOfPlayers; i++) {
+			
+			int currentBalance = players[i].getBalance();
+						
+			if (heighestAmount <= currentBalance) {
 					heighestAmount = currentBalance;
 					highestPlayer = i + 1;
-				}
 			}
 		}
 		
@@ -123,6 +121,14 @@ public class PlayField {
 	
 	public int getCurrentPosition() {
 		return currentPlayer.getPosition();
+	}
+	
+	public int playBalance(int player) {
+		return players[player - 1].getBalance();
+	}
+	
+	public Player getPlayer(int player) {
+		return players[player -1];
 	}
 	
 	public int getCurrentPlayer() {

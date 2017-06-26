@@ -11,13 +11,11 @@ public class MainOne {
 
 	public static void main(String[] args) {
 		
-		PlayGame  pg = new PlayGame(2, 1000);
-		ArrayList<Strategy> as = new ArrayList<>();
-		as.add(new NeverBuy());
-		as.add(new AlwaysBuy());
-		pg.giveStrategy(as);
+		PlayGame  pg = new PlayGame(2, 100);
+		pg.giveStrategy(1, new CalculateBuy());
+		pg.giveStrategy(2, new AlwaysBuy());
 		
-		GameStrategyStatistics gss = new GameStrategyStatistics(pg, 1000);
+		GameStrategyStatistics gss = new GameStrategyStatistics(pg, 100);
 		gss.start();
 		
 		System.out.println("Player 1 amounts of win: " + gss.resultForPlayer(1));

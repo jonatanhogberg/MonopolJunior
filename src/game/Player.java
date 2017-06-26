@@ -1,12 +1,47 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import card.CardDeck;
+import card.FreePassCard;
+
 public class Player {
 	private int balance;
 	private int position;
+	private HashMap<Integer, Integer> freePass;
+
 	
 	public Player(int balance) {
 		this.balance = balance;
 		position = 1;
+		freePass = new HashMap<Integer, Integer>();
+		
+	}
+	
+	public void giveFreePass(int pos) {
+		if (freePass.get(pos) == null)
+			freePass.put(pos, 0);
+
+		freePass.put(pos, freePass.get(pos) + 1);
+	}
+	
+	public boolean useFreePass(int pos) {
+		if (freePass.get(pos) > 0) {
+			
+			freePass.put(pos, freePass.get(pos) - 1);
+			
+			if (freePass.get(pos - 1) > 0) {
+				freePass.put(pos - 1, freePass.get(pos) - 1);
+				CardDeck.getInstance().giveBackCard(new FreePassCard(pos, pos - 1));
+			} else {
+				freePass.put(pos + 1, freePass.get(pos) - 1);
+				CardDeck.getInstance().giveBackCard(new FreePassCard(pos, pos + 1));
+			}			
+			
+			return true;
+		}
+		return false;
 	}
 	
 	public void move() {

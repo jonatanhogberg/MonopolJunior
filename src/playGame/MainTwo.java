@@ -7,10 +7,10 @@ public class MainTwo {
 
 	public static void main(String[] args) {
 		PlayField pf = new PlayField();
-		pf.startGame(2, 10);
+		pf.startGame(2, 1000);
 		
 		for (int i = 0; i < 100; i++) {
-			pf.nextPlayerMove();
+			pf.playerMove();
 			System.out.println("");
 			System.out.println("Move: " + (i + 1));
 			System.out.println("");

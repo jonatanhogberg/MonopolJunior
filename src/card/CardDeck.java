@@ -6,9 +6,10 @@ import java.util.Collections;
 public class CardDeck {
 	private static CardDeck instance = new CardDeck();
 	
-	private static ArrayList<Card> cards = new ArrayList<>();
+	private static ArrayList<Card> cards;
 
 	private CardDeck() {
+		cards = new ArrayList<>();
 		init();
 	}
 	
@@ -16,8 +17,21 @@ public class CardDeck {
 		return instance;
 	}
 	
-	public static void shuffle() {
+	public void shuffle() {
 		Collections.shuffle(cards);
+	}
+	
+	public Card getCard() {
+		shuffle();
+		return cards.get(cards.size() - 1);
+	}
+	
+	public void removeLatestCard() {
+		cards.remove(cards.size() - 1);
+	}
+	
+	public void giveBackCard(Card card) {
+		cards.add(card);
 	}
 	
 	public void init() {

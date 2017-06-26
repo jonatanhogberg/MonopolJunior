@@ -6,7 +6,8 @@ public class NeverBuy implements Strategy {
 
 	@Override
 	public void newTurn(PlayField pf) {
-		pf.nextPlayerMove();
+		pf.playerMove();
+		pf.nextTurn();
 	}
 
 }

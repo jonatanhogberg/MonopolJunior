@@ -10,9 +10,16 @@ public class CalculateBuy implements Strategy {
 
 	@Override
 	public void newTurn(PlayField pf) {
-		pf.nextPlayerMove();
-		if (pf.costForEntertement() * 2 <= pf.checkBalance())
-			pf.currentPlayerBuy();
-		
+		pf.playerMove();
+		if (pf.canBuy()) {
+			int balance = pf.checkBalance();
+			int cost = pf.costForEntertement();
+			System.out.println(pf.checkBalance());
+			System.out.println(pf.costForEntertement());
+			if (cost * 2 <= balance) {
+				//pf.currentPlayerBuy();
+			}
+		}
+		pf.nextTurn();
 	}
 }

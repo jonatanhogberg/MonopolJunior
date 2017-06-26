@@ -6,8 +6,9 @@ public class AlwaysBuy implements Strategy {
 
 	@Override
 	public void newTurn(PlayField pf) {
-		pf.nextPlayerMove();
+		pf.playerMove();
 		pf.currentPlayerBuy();
+		pf.nextTurn();
 	}
 
 }
