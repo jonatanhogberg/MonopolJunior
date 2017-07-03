@@ -3,10 +3,6 @@ package strategy;
 import game.PlayField;
 
 public class CalculateBuy implements Strategy {
-	
-	public CalculateBuy() {
-		
-	}
 
 	@Override
 	public void newTurn(PlayField pf) {
@@ -14,10 +10,9 @@ public class CalculateBuy implements Strategy {
 		if (pf.canBuy()) {
 			int balance = pf.checkBalance();
 			int cost = pf.costForEntertement();
-			System.out.println(pf.checkBalance());
-			System.out.println(pf.costForEntertement());
+
 			if (cost * 2 <= balance) {
-				//pf.currentPlayerBuy();
+				pf.currentPlayerBuy();
 			}
 		}
 		pf.nextTurn();

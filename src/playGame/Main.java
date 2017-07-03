@@ -1,26 +1,26 @@
 package playGame;
 
-import java.util.ArrayList;
-
-import strategy.AlwaysBuy;
 import strategy.CalculateBuy;
 import strategy.NeverBuy;
-import strategy.Strategy;
 
-public class MainOne {
+
+public class Main {
 
 	public static void main(String[] args) {
 		
-		PlayGame  pg = new PlayGame(2, 100);
+		int players = 2;
+		int startMoeney = 0;
+		
+		PlayGame  pg = new PlayGame(players, startMoeney);
+		// Ge strategi till player 1 och 2
 		pg.giveStrategy(1, new CalculateBuy());
-		pg.giveStrategy(2, new AlwaysBuy());
+		pg.giveStrategy(2, new NeverBuy());
 		
-		GameStrategyStatistics gss = new GameStrategyStatistics(pg, 100);
+		int amountOfGames = 1000;
+		GameStrategyStatistics gss = new GameStrategyStatistics(pg, amountOfGames);
 		gss.start();
-		
+
 		System.out.println("Player 1 amounts of win: " + gss.resultForPlayer(1));
 		System.out.println("Player 2 amounts of win: " + gss.resultForPlayer(2));
-		
 	}
-
 }

@@ -6,7 +6,6 @@ public class OnkelKrosus {
 
 	private OnkelKrosus() {}
 	
-	//helper
 	public int OnkelMoeny() {
 		return balance;
 	}
