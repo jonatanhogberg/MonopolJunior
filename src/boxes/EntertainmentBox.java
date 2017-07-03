@@ -39,13 +39,15 @@ public class EntertainmentBox implements Box {
 	}
 	
 	public boolean buy(Player player) {
+		boolean didBuy = false;
+		
 		if (isBuyable() && affordEntertainment(player)) {
 			owner = player;
 			player.pay(cost);
 			isBuyable = false;
-			return true;
+			didBuy = true;
 		}
-		return false;
+		return didBuy;
 	}
 	
 	private boolean affordEntertainment(Player player) {

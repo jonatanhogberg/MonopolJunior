@@ -1,5 +1,4 @@
 package boxes;
-import game.Dice;
 import game.Player;
 
 public class TrainBox implements Box {
@@ -18,9 +17,5 @@ public class TrainBox implements Box {
 	@Override
 	public boolean isBuyable() {
 		return false;
-	}
-	 
-	public int extraRoll() {
-		return Dice.roll();
 	}
 }

@@ -40,7 +40,6 @@ public class PlayField {
 		int newPosition = currentPlayer.getPosition();
 		
 		currentBox = boxes.getBox(newPosition);
-		//boolean newAction
 		
 		while (currentBox.nextAction(currentPlayer)) {
 			newPosition = currentPlayer.getPosition();
@@ -84,10 +83,6 @@ public class PlayField {
 		}
 	}
 	
-	/*public int checkPlayerPosition(int player) {
-		return players[player].getPosition();
-	}*/
-	
 	public boolean isGameOver() {
 		for (int i = 0; i < amountOfPlayers; i++) {
 			if (players[i].getBalance() <= 0) {
@@ -119,11 +114,11 @@ public class PlayField {
 		return (currentPlayer.getBalance() >= 0);
 	}
 	
-	public int getCurrentPosition() {
+	public int currentPlayerPosition() {
 		return currentPlayer.getPosition();
 	}
 	
-	public int playBalance(int player) {
+	public int playerBalance(int player) {
 		return players[player - 1].getBalance();
 	}
 	

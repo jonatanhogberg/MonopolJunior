@@ -13,7 +13,6 @@ public class ShowBox implements Box {
 	@Override
 	public boolean nextAction(Player player) {
 		payOnkel(player);
-	
 		return false;
 	}
 	

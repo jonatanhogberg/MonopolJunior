@@ -9,5 +9,4 @@ public class NeverBuy implements Strategy {
 		pf.playerMove();
 		pf.nextTurn();
 	}
-
 }

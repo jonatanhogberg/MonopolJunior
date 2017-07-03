@@ -10,5 +10,4 @@ public class AlwaysBuy implements Strategy {
 		pf.currentPlayerBuy();
 		pf.nextTurn();
 	}
-
 }

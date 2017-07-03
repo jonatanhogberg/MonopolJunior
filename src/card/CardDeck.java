@@ -11,6 +11,7 @@ public class CardDeck {
 	private CardDeck() {
 		cards = new ArrayList<>();
 		init();
+		shuffle();
 	}
 	
 	public static CardDeck getInstance(){
@@ -22,7 +23,6 @@ public class CardDeck {
 	}
 	
 	public Card getCard() {
-		shuffle();
 		return cards.get(cards.size() - 1);
 	}
 	

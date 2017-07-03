@@ -26,6 +26,8 @@ public class Player {
 	}
 	
 	public boolean useFreePass(int pos) {
+		boolean haveFreePass = false;
+		
 		if (freePass.get(pos) > 0) {
 			
 			freePass.put(pos, freePass.get(pos) - 1);
@@ -38,9 +40,9 @@ public class Player {
 				CardDeck.getInstance().giveBackCard(new FreePassCard(pos, pos + 1));
 			}			
 			
-			return true;
+			haveFreePass = true;
 		}
-		return false;
+		return haveFreePass;
 	}
 	
 	public void move() {
